@@ -3,64 +3,136 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 const PAGES = ['cover', 'dad', 'mum', 'auntie', 'ammy', 'ian', 'final']
 const CANDLE_COLORS = ['#ff6eb4', '#a78bfa', '#34d399', '#60a5fa', '#fbbf24']
 
-function Sparkles() {
-  const sparks = [
-    { w: 12, h: 12, top: '16%', left: '20%', dur: '2.3s', delay: '0s' },
-    { w: 9,  h: 9,  top: '28%', left: '78%', dur: '2s',   delay: '.4s' },
-    { w: 14, h: 14, top: '62%', left: '16%', dur: '2.7s', delay: '.9s' },
-    { w: 10, h: 10, top: '72%', left: '84%', dur: '2.2s', delay: '1.3s' },
-    { w: 8,  h: 8,  top: '45%', left: '88%', dur: '1.9s', delay: '.2s' },
-  ]
-  return sparks.map((s, i) => (
-    <div key={i} className="sparkle" style={{ width: s.w, height: s.h, top: s.top, left: s.left, animationDuration: s.dur, animationDelay: s.delay }} />
-  ))
-}
-
-function Stars() {
-  const stars = [
-    { w: 4, top: '10%', left: '15%', delay: '0s' },
-    { w: 3, top: '18%', left: '82%', delay: '.6s' },
-    { w: 5, top: '32%', left: '92%', delay: '1.2s' },
-    { w: 3, top: '58%', left: '10%', delay: '.4s' },
-    { w: 4, top: '78%', left: '88%', delay: '.9s' },
-    { w: 3, top: '88%', left: '42%', delay: '1.5s' },
-    { w: 4, top: '22%', left: '52%', delay: '.7s' },
-    { w: 3, top: '68%', left: '68%', delay: '1.3s' },
-  ]
-  return stars.map((s, i) => (
-    <span key={i} className="star" style={{ width: s.w, height: s.w, top: s.top, left: s.left, animationDelay: s.delay }} />
-  ))
-}
-
-function CoverPage({ onNext }) {
+function FloatingEmojis({ emojis }) {
   return (
-    <div className="page page-cover active">
-      <Sparkles />
-      <div className="cover-emoji">🎉</div>
-      <h1 className="cover-title">Happy Birthday<br />Melissa Makori 🎉</h1>
-      <p className="cover-sub">A special story made just for you 💖</p>
-      <button className="btn btn-open" onClick={onNext}>Open Your Story 📖</button>
+    <div className="floating-emojis" aria-hidden="true">
+      {emojis.map((e, i) => (
+        <span key={i} className="float-emoji" style={{ '--i': i, '--total': emojis.length }}>{e}</span>
+      ))}
     </div>
   )
 }
 
-function MessagePage({ icon, titleColor, title, msg, onNext, onBack, pageNum, nextStyle }) {
+function Sparkles() {
   return (
-    <div className="page active">
-      <div className="page-icon">{icon}</div>
-      <h2 className="page-title" style={{ color: titleColor }}>{title}</h2>
-      <p className="page-msg">{msg}</p>
-      <button className="btn btn-next" style={nextStyle} onClick={onNext}>Next →</button>
-      <div className="nav">
-        <button className="nav-back" onClick={onBack}>← Back</button>
-        <span className="page-num">{pageNum} / 6</span>
+    <div className="sparkles-wrap" aria-hidden="true">
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className="sparkle" style={{ '--i': i }} />
+      ))}
+    </div>
+  )
+}
+
+function Stars() {
+  return (
+    <div className="stars-wrap" aria-hidden="true">
+      {[...Array(12)].map((_, i) => (
+        <span key={i} className="star" style={{ '--i': i }} />
+      ))}
+    </div>
+  )
+}
+
+function PageNav({ onBack, onNext, pageNum, total = 6, nextLabel = 'Next →', nextClass = '' }) {
+  return (
+    <div className="nav">
+      <button className="nav-back" onClick={onBack}>← Back</button>
+      <span className="page-num">{pageNum} / {total}</span>
+      <button className={`nav-next ${nextClass}`} onClick={onNext}>{nextLabel}</button>
+    </div>
+  )
+}
+
+function CoverPage({ onNext }) {
+  return (
+    <div className="page page-cover">
+      <Sparkles />
+      <FloatingEmojis emojis={['🎀','⭐','🌟','💫','✨','🎊','🎁','🌸']} />
+      <div className="cover-inner">
+        <div className="cover-badge">🎂 11 Today! 🎂</div>
+        <div className="cover-emoji">🎉</div>
+        <h1 className="cover-title">Happy Birthday<br /><span className="cover-name">Melissa Makori</span></h1>
+        <p className="cover-sub">A special story made just for you 💖</p>
+        <button className="btn btn-open" onClick={onNext}>
+          <span>Open Your Story</span> 📖
+        </button>
       </div>
     </div>
   )
 }
 
+function DadPage({ onNext, onBack }) {
+  return (
+    <div className="page page-dad">
+      <FloatingEmojis emojis={['⭐','💙','🌊','✨','💫','🔵']} />
+      <div className="msg-card card-dad">
+        <div className="card-header">
+          <span className="card-icon">💙</span>
+          <h2 className="card-title">From Dad</h2>
+          <div className="card-underline" />
+        </div>
+        <p className="card-msg">
+          My dearest Melissa,<br /><br />
+          Eleven years ago you changed my world forever. Every single day since, you've made it brighter and more full of joy than I ever imagined.<br /><br />
+          Watching you grow into the smart, kind, and wonderful girl you are fills my heart with more pride than words can hold.<br /><br />
+          You are my greatest adventure — keep shining, always. ⭐
+        </p>
+        <div className="card-footer">— Dad 💙</div>
+      </div>
+      <PageNav onBack={onBack} onNext={onNext} pageNum={1} nextClass="next-blue" />
+    </div>
+  )
+}
+
+function MumPage({ onNext, onBack }) {
+  return (
+    <div className="page page-mum">
+      <FloatingEmojis emojis={['💖','🌸','🌺','💕','🌷','✨','👑','🦋']} />
+      <div className="msg-card card-mum">
+        <div className="card-header">
+          <span className="card-icon">💖</span>
+          <h2 className="card-title">From Mum</h2>
+          <div className="card-underline" />
+        </div>
+        <p className="card-msg">
+          My precious Melissa,<br /><br />
+          You are the light of my life and the reason I smile every single day. From the very first moment I held you, I knew you were something extraordinary.<br /><br />
+          You have a heart full of gold and a laugh that lights up every room. I fall more in love with who you are every single day.<br /><br />
+          Happy Birthday, my darling princess. 👑
+        </p>
+        <div className="card-footer">— Mum 💖</div>
+      </div>
+      <PageNav onBack={onBack} onNext={onNext} pageNum={2} nextClass="next-pink" />
+    </div>
+  )
+}
+
+function AuntiePage({ onNext, onBack }) {
+  return (
+    <div className="page page-auntie">
+      <FloatingEmojis emojis={['🌸','💜','🦄','🌙','💫','🔮','🌟','🪄']} />
+      <div className="msg-card card-auntie">
+        <div className="card-header">
+          <span className="card-icon">🌸</span>
+          <h2 className="card-title">From Auntie Sarah</h2>
+          <div className="card-underline" />
+        </div>
+        <p className="card-msg">
+          Sweet Melissa,<br /><br />
+          You are growing into the most incredible young lady — curious, brave, and full of life. The world is brighter simply because you are in it.<br /><br />
+          Never stop asking questions, never stop dreaming big, and never forget how truly special you are.<br /><br />
+          Sending you the biggest birthday hug! 💜
+        </p>
+        <div className="card-footer">— Auntie Sarah 🌸</div>
+      </div>
+      <PageNav onBack={onBack} onNext={onNext} pageNum={3} nextClass="next-purple" />
+    </div>
+  )
+}
+
 function AmmyPage({ onNext, onBack }) {
-  const [popped, setPopped] = useState([false, false, false, false])
+  const [popped, setPopped] = useState([false, false, false, false, false, false])
+  const allPopped = popped.every(Boolean)
 
   function popBalloon(i) {
     if (popped[i]) return
@@ -78,24 +150,61 @@ function AmmyPage({ onNext, onBack }) {
   }
 
   return (
-    <div className="page page-ammy active">
-      <div className="page-icon">🎈</div>
-      <h2 className="page-title" style={{ color: '#c07000' }}>From Ammy 🎈</h2>
-      <p className="page-msg">
-        MELISSA!! 🎉<br /><br />
-        Happy Birthday to the most amazing sister in the universe! You make every moment more fun and every memory more special.<br /><br />
-        Pop the balloons! 👇
-      </p>
-      <div className="balloon-row">
-        {popped.map((p, i) => (
-          <button key={i} className={`balloon${p ? ' popped' : ''}`} onClick={() => popBalloon(i)} style={p ? { visibility: 'hidden' } : {}}>🎈</button>
-        ))}
+    <div className="page page-ammy">
+      <FloatingEmojis emojis={['🎈','🎊','🎉','⭐','🌟','💛']} />
+      <div className="ammy-inner">
+        <div className="ammy-header">
+          <span className="card-icon">🎈</span>
+          <h2 className="card-title" style={{ color: '#b45309' }}>From Ammy</h2>
+          <div className="card-underline" style={{ background: 'linear-gradient(90deg,#f59e0b,#fb923c)' }} />
+        </div>
+        <p className="ammy-msg">
+          MELISSA!! 🎉 Happy Birthday to the most amazing sister in the universe!<br /><br />
+          {allPopped ? '🎊 You popped them all!! You\'re a superstar! 🌟' : 'Pop ALL the balloons! 👇'}
+        </p>
+        <div className="balloon-grid">
+          {popped.map((p, i) => (
+            <button
+              key={i}
+              className={`balloon${p ? ' popped' : ''}`}
+              onClick={() => popBalloon(i)}
+              style={p ? { visibility: 'hidden' } : {}}
+            >
+              {['🎈','🎀','🎊','🎁','🌟','💛'][i]}
+            </button>
+          ))}
+        </div>
       </div>
-      <button className="btn btn-next" onClick={onNext}>Next →</button>
-      <div className="nav">
-        <button className="nav-back" onClick={onBack}>← Back</button>
-        <span className="page-num">4 / 6</span>
+      <PageNav onBack={onBack} onNext={onNext} pageNum={4} nextClass="next-orange" />
+    </div>
+  )
+}
+
+function IanPage({ onNext, onBack }) {
+  const [clicked, setClicked] = useState(false)
+  return (
+    <div className="page page-ian">
+      <FloatingEmojis emojis={['😎','🔥','🏆','⚡','🎮','🌿','✨','🎯']} />
+      <div className="msg-card card-ian">
+        <div className="card-header">
+          <span className="card-icon">😎</span>
+          <h2 className="card-title">From Cousin Ian</h2>
+          <div className="card-underline" style={{ background: 'linear-gradient(90deg,#059669,#34d399)' }} />
+        </div>
+        <p className="card-msg">
+          Yo Melissa! 🎉<br /><br />
+          You're not just my cousin — you're one of my favourite people. Keep smiling, keep winning, and keep being awesome 😎<br /><br />
+          I'm really grateful to have you in my life. Hope today is absolutely epic — you deserve the best day ever!<br /><br />
+          Happy Birthday!! 🎂🔥
+        </p>
+        <button
+          className={`fist-bump ${clicked ? 'bumped' : ''}`}
+          onClick={() => setClicked(true)}
+        >
+          {clicked ? '💥 BOOM! 💥' : '👊 Fist bump!'}
+        </button>
       </div>
+      <PageNav onBack={onBack} onNext={onNext} pageNum={5} nextClass="next-green" />
     </div>
   )
 }
@@ -119,27 +228,29 @@ function FinalPage({ onBack, onRestart }) {
   }, [flames, wished])
 
   return (
-    <div className="page page-final active">
+    <div className="page page-final">
       <Stars />
-      <canvas id="confetti-canvas" ref={confettiRef} />
-      <h1 className="final-title">HAPPY 11TH BIRTHDAY 🎂💙</h1>
-      <div className="candles-row">
-        {CANDLE_COLORS.map((col, i) => (
-          <div key={i} className="candle" onClick={() => blowOne(i)}>
-            <div className={`flame${flames[i] ? '' : ' out'}`} />
-            <div className="candle-body" style={{ background: col }} />
-          </div>
-        ))}
+      <canvas ref={confettiRef} style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 100, display: 'none' }} />
+      <div className="final-inner">
+        <h1 className="final-title">HAPPY<br />11TH BIRTHDAY<br />🎂💙</h1>
+        <div className="candles-row">
+          {CANDLE_COLORS.map((col, i) => (
+            <div key={i} className="candle" onClick={() => blowOne(i)}>
+              <div className={`flame${flames[i] ? '' : ' out'}`} />
+              <div className="candle-body" style={{ background: col }} />
+            </div>
+          ))}
+        </div>
+        <div className="cake-wrap" onClick={blowAll}>
+          <span className="cake-emoji">{wished ? '🎊' : '🎂'}</span>
+          <p className="cake-hint">{wished ? '🎉 Make a wish! 🎉' : '👆 Click to blow them all out!'}</p>
+        </div>
+        <p className="final-msg">
+          We love you to the moon and back, Melissa. 🌙✨<br />
+          May this year be your most magical yet!
+        </p>
       </div>
-      <div className="cake-wrap" onClick={blowAll}>
-        <span className="cake-emoji">{wished ? '🎊' : '🎂'}</span>
-        <p className="cake-hint">{wished ? '🎉 Make a wish! 🎉' : '👆 Click to blow out the candles!'}</p>
-      </div>
-      <p className="final-msg">
-        We love you to the moon and back, Melissa. 🌙✨<br />
-        May this year be your most magical yet!
-      </p>
-      <div className="nav">
+      <div className="nav final-nav">
         <button className="nav-back" onClick={onBack}>← Back</button>
         <button className="nav-back" onClick={onRestart}>🔄 Start Over</button>
       </div>
@@ -154,16 +265,12 @@ function launchConfetti(canvas) {
   canvas.height = window.innerHeight
   const ctx = canvas.getContext('2d')
   const cols = ['#ff6eb4','#ffd700','#a78bfa','#34d399','#60a5fa','#fb923c','#f472b6','#fff']
-  const pieces = Array.from({ length: 160 }, () => ({
-    x: Math.random() * canvas.width,
-    y: -30 - Math.random() * 400,
-    vx: (Math.random() - 0.5) * 5,
-    vy: 3 + Math.random() * 4,
+  const pieces = Array.from({ length: 180 }, () => ({
+    x: Math.random() * canvas.width, y: -30 - Math.random() * 400,
+    vx: (Math.random() - 0.5) * 5, vy: 3 + Math.random() * 4,
     col: cols[Math.floor(Math.random() * cols.length)],
-    w: 8 + Math.random() * 10,
-    h: 6 + Math.random() * 6,
-    rot: Math.random() * 360,
-    rv: (Math.random() - 0.5) * 8,
+    w: 8 + Math.random() * 10, h: 6 + Math.random() * 6,
+    rot: Math.random() * 360, rv: (Math.random() - 0.5) * 8,
   }))
   let frame = 0
   function draw() {
@@ -175,7 +282,7 @@ function launchConfetti(canvas) {
       ctx.fillStyle = p.col; ctx.globalAlpha = 0.9
       ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore()
     })
-    if (++frame < 400) requestAnimationFrame(draw)
+    if (++frame < 450) requestAnimationFrame(draw)
     else canvas.style.display = 'none'
   }
   draw()
@@ -210,7 +317,6 @@ export default function App() {
     return () => document.body.removeEventListener('click', handler)
   }, [ribbonSnapped, snapRibbon])
 
-  // Touch swipe
   const touchStartX = useRef(0)
   const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX }
   const onTouchEnd = (e) => {
@@ -220,7 +326,6 @@ export default function App() {
 
   const next = () => flipTo(Math.min(pageIdx + 1, PAGES.length - 1))
   const back = () => flipTo(Math.max(pageIdx - 1, 0))
-
   const currentPage = PAGES[pageIdx]
 
   return (
@@ -229,27 +334,11 @@ export default function App() {
       <div className="book" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div className="pages-stack" ref={stackRef}>
           {currentPage === 'cover'  && <CoverPage onNext={next} />}
-          {currentPage === 'dad'    && (
-            <MessagePage icon="💙" titleColor="#1565c0" title="From Dad 💙" onNext={next} onBack={back} pageNum={1} msg={
-              <>My dearest Melissa,<br /><br />Eleven years ago you changed my world forever. Every single day since, you have made it brighter and more full of joy than I ever imagined.<br /><br />Watching you grow into the smart, kind, and wonderful girl you are fills my heart with more pride than words can hold. You are my greatest adventure — keep shining, always. ⭐</>
-            } />
-          )}
-          {currentPage === 'mum'    && (
-            <MessagePage icon="💖" titleColor="#c0396b" title="From Mum 💖" onNext={next} onBack={back} pageNum={2} msg={
-              <>My precious Melissa,<br /><br />You are the light of my life and the reason I smile every single day. From the very first moment I held you, I knew you were something extraordinary.<br /><br />You have a heart full of gold and a laugh that lights up every room. I fall more in love with who you are every single day. Happy Birthday, my darling princess. 👑</>
-            } />
-          )}
-          {currentPage === 'auntie' && (
-            <MessagePage icon="🌸" titleColor="#7b3fa0" title="From Auntie Sarah 💙" onNext={next} onBack={back} pageNum={3} msg={
-              <>Sweet Melissa,<br /><br />You are growing into the most incredible young lady — curious, brave, and full of life. The world is brighter simply because you are in it.<br /><br />Never stop asking questions, never stop dreaming big, and never forget how truly special you are. Sending you the biggest birthday hug! 💜</>
-            } />
-          )}
+          {currentPage === 'dad'    && <DadPage onNext={next} onBack={back} />}
+          {currentPage === 'mum'    && <MumPage onNext={next} onBack={back} />}
+          {currentPage === 'auntie' && <AuntiePage onNext={next} onBack={back} />}
           {currentPage === 'ammy'   && <AmmyPage onNext={next} onBack={back} />}
-          {currentPage === 'ian'    && (
-            <MessagePage icon="😎" titleColor="#1a7a4a" title="From Cousin Ian 😎" onNext={next} onBack={back} pageNum={5} nextStyle={{ background: 'linear-gradient(135deg,#1a7a4a,#34d399)' }} msg={
-              <>Yo Melissa! 🎉<br /><br />You're not just my cousin — you're one of my favourite people. Keep smiling, keep winning, and keep being awesome 😎<br /><br />I'm really grateful to have you in my life. Hope today is absolutely epic — you deserve the best day ever! Happy Birthday!! 🎂🔥</>
-            } />
-          )}
+          {currentPage === 'ian'    && <IanPage onNext={next} onBack={back} />}
           {currentPage === 'final'  && <FinalPage onBack={back} onRestart={() => flipTo(0)} />}
         </div>
       </div>
