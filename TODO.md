@@ -3,8 +3,9 @@
 ## Current Task: Fix CSS newlines in src/index.css + test/deploy
 
 ## TODO Steps:
-1. [ ] Fix malformed CSS selectors in src/index.css (.cover-title, .card-title, .final-title)
-2. [ ] Test changes: Open index.html or run vite preview to verify
+1. [x] Fix malformed CSS selectors in src/index.css (.cover-title, .card-title, .final-title)
+2. [x] Test changes: Open index.html or run vite preview to verify
+3. [x] Update TODO.md with [x] progress
 3. [ ] Update TODO.md with [x] progress
 4. [ ] Git commit: \"fix css syntax: remove erroneous newlines in selectors\"
 5. [ ] Git push for Netlify redeploy

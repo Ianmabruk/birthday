@@ -254,12 +254,12 @@ body::after{
 .card-header{display:flex;flex-direction:column;align-items:center;margin-bottom:16px}
 .card-icon{font-size:2.8rem;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))}
 .card-title{font-family:'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size:clamp(1.54rem,4.4vw,1.98rem);font-weight:700;
+  font-weight:700;
+  font-size:clamp(1.54rem,4.4vw,1.98rem);
   margin-top:6px;letter-spacing:-0.01em;
 }
 .card-underline{height:3px;width:60px;border-radius:4px;margin-top:8px}
-.card-msg{  font-size:clamp(0.88rem,2.2vw,0.98rem);  font-weight: 500;  line-height:1.95;  text-shadow: 0 1px 3px rgba(0,0,0,0.3);  text-align:center;}
+.card-msg{font-size:clamp(0.88rem,2.2vw,0.98rem);font-weight:500;line-height:1.95;text-shadow:0 1px 3px rgba(0,0,0,0.3);text-align:center;}
 .card-footer{
   margin-top:16px;text-align:right;
   font-style:italic;font-size:0.9rem;
@@ -336,7 +336,7 @@ body::after{
   box-shadow:0 8px 40px rgba(0,0,0,0.12);
 }
 .ammy-header{display:flex;flex-direction:column;align-items:center;margin-bottom:12px}
-.ammy-msg{  font-size:clamp(0.88rem,2.2vw,0.96rem);  font-weight: 500;  line-height:1.95;  color:#78350f;  text-align:center;  margin-bottom:16px;  text-shadow: 0 1px 2px rgba(0,0,0,0.4);}
+.ammy-msg{font-size:clamp(0.88rem,2.2vw,0.96rem);font-weight:500;line-height:1.95;color:#78350f;text-align:center;margin-bottom:16px;text-shadow:0 1px 2px rgba(0,0,0,0.4);}
 .balloon-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:10px;justify-items:center;margin-bottom:4px;
@@ -403,7 +403,7 @@ body::after{
   z-index:2;gap:6px;
 }
 .final-title{font-family:'Quicksand', sans-serif;
-  font-weight: 700;
+  font-weight:700;
   font-size:clamp(1.76rem,6.05vw,2.42rem);
   color:#fff;text-align:center;line-height:1.25;
   animation:glow 2.5s ease-in-out infinite alternate;
@@ -431,7 +431,7 @@ body::after{
 .cake-wrap:hover{transform:scale(1.05)}
 .cake-emoji{font-size:clamp(3.5rem,10vw,5rem);display:block;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.5));transition:all 0.3s}
 .cake-hint{font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:8px;font-style:italic}
-.final-msg{  font-size:clamp(0.9rem,2.4vw,1rem);  font-weight: 500;  line-height:1.95;  color:rgba(255,255,255,0.85);  text-align:center;  max-width:400px;  text-shadow:0 2px 8px rgba(0,0,0,0.5), 0 0 4px rgba(255,255,255,0.3);}
+.final-msg{font-size:clamp(0.9rem,2.4vw,1rem);font-weight:500;line-height:1.95;color:rgba(255,255,255,0.85);text-align:center;max-width:400px;text-shadow:0 2px 8px rgba(0,0,0,0.5),0 0 4px rgba(255,255,255,0.3);}
 .final-nav{background:rgba(255,255,255,0.05);border-top:1px solid rgba(255,255,255,0.08)}
 
 /* ── RESPONSIVE ── */
