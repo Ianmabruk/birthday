@@ -203,8 +203,8 @@ body::after{
   filter:drop-shadow(0 8px 20px rgba(0,0,0,0.4));
 }
 @keyframes bob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.05)}}
-.cover-title{font-family:'Quicksand', sans-serif;
-  font-size:clamp(1.87rem,6.05vw,2.64rem);
+.cover-title{font-family:'Quicksand', sans-serif;font-size:clamp(1.87rem,6.05vw,2.64rem);
+
   font-weight:900;color:#fff;
   text-shadow:0 4px 16px rgba(0,0,0,0.4),0 0 30px rgba(255,255,255,0.3);
   line-height:1.2;text-align:center;margin-bottom:4px;
@@ -253,8 +253,7 @@ body::after{
 }
 .card-header{display:flex;flex-direction:column;align-items:center;margin-bottom:16px}
 .card-icon{font-size:2.8rem;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))}
-.card-title{font-family:'Quicksand', sans-serif;
-  font-weight:700;
+.card-title{font-family:'Quicksand', sans-serif;font-weight:700;
   font-size:clamp(1.54rem,4.4vw,1.98rem);
   margin-top:6px;letter-spacing:-0.01em;
 }
@@ -308,7 +307,7 @@ body::after{
 .page-auntie{
   background:
     radial-gradient(ellipse at 25% 20%,rgba(221,214,254,0.7) 0%,transparent 45%),
-    radial-gradient(ellipse at 75% 80%,rgba(139,92,246,0.25) 0%,transparent 45%),\n    linear-gradient(160deg,#f5f3ff 0%,#ede9fe 50%,#ddd6fe 100%);
+ linear-gradient(160deg,#f5f3ff 0%,#ede9fe 50%,#ddd6fe 100%);
 }
 .card-auntie{
   background:linear-gradient(145deg,rgba(255,255,255,0.96),rgba(245,243,255,0.96));
@@ -402,8 +401,7 @@ body::after{
   display:flex;flex-direction:column;align-items:center;
   z-index:2;gap:6px;
 }
-.final-title{font-family:'Quicksand', sans-serif;
-  font-weight:700;
+.final-title{font-family:'Quicksand', sans-serif;font-weight:700;
   font-size:clamp(1.76rem,6.05vw,2.42rem);
   color:#fff;text-align:center;line-height:1.25;
   animation:glow 2.5s ease-in-out infinite alternate;

@@ -1,16 +1,10 @@
-# E-Card CSS Syntax Fix - Progress Tracker
+## Task Progress: Fix Vite Build Error (CSS PostCSS Parse Issue)
 
-## Current Task: Fix CSS newlines in src/index.css + test/deploy
-
-## TODO Steps:
-1. [x] Fix malformed CSS selectors in src/index.css (.cover-title, .card-title, .final-title)
-2. [x] Test changes: Open index.html or run vite preview to verify
-3. [x] Update TODO.md with [x] progress
-3. [ ] Update TODO.md with [x] progress
-4. [ ] Git commit: \"fix css syntax: remove erroneous newlines in selectors\"
-5. [ ] Git push for Netlify redeploy
-6. [ ] Verify deployment & task complete ✅
-
-## Previous Tasks:
-- [x] Analyzed files & created plan  
-- [x] User approved plan ✅
+### Pending Steps:
+- [x] Step 1: Understand error and analyze src/index.css
+- [x] Step 2: Review vite.config.js and package.json
+- [x] Step 3: Create edit plan and get user approval
+- [x] Step 4: Edit src/index.css to fix malformed font-family declarations
+- [x] Step 5: Test with `npm run build` (completed successfully)
+- [ ] Step 6: Commit changes and git push to https://github.com/Ianmabruk/birthday.git
+- [ ] Step 7: Attempt completion (verify Netlify deploy)
