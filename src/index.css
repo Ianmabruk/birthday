@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;800&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
 
@@ -10,7 +10,7 @@
 body{
   min-height:100vh;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Inter',sans-serif;
+  font-family:'Quicksand', 'Inter', sans-serif;
   background:linear-gradient(135deg,#1e3c72 0%,#2a5298 50%,#00b4d8 100%);
   padding:20px;
   cursor:pointer;
@@ -203,9 +203,8 @@ body::after{
   filter:drop-shadow(0 8px 20px rgba(0,0,0,0.4));
 }
 @keyframes bob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.05)}}
-.cover-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.7rem,5.5vw,2.4rem);
+.cover-title{\n  font-family:'Quicksand', sans-serif;
+  font-size:clamp(1.87rem,6.05vw,2.64rem);
   font-weight:900;color:#fff;
   text-shadow:0 4px 16px rgba(0,0,0,0.4),0 0 30px rgba(255,255,255,0.3);
   line-height:1.2;text-align:center;margin-bottom:4px;
@@ -254,17 +253,12 @@ body::after{
 }
 .card-header{display:flex;flex-direction:column;align-items:center;margin-bottom:16px}
 .card-icon{font-size:2.8rem;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))}
-.card-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.4rem,4vw,1.8rem);font-weight:900;
+.card-title{\n  font-family:'Quicksand', sans-serif;\n  font-weight: 700;
+  font-size:clamp(1.54rem,4.4vw,1.98rem);font-weight:700;
   margin-top:6px;letter-spacing:-0.01em;
 }
 .card-underline{height:3px;width:60px;border-radius:4px;margin-top:8px}
-.card-msg{
-  font-size:clamp(0.88rem,2.2vw,0.98rem);
-  line-height:1.9;
-  text-align:center;
-}
+.card-msg{\n  font-size:clamp(0.88rem,2.2vw,0.98rem);\n  font-weight: 500;\n  line-height:1.95;\n  text-shadow: 0 1px 3px rgba(0,0,0,0.3);\n  text-align:center;\n}
 .card-footer{
   margin-top:16px;text-align:right;
   font-style:italic;font-size:0.9rem;
@@ -342,10 +336,7 @@ body::after{
   box-shadow:0 8px 40px rgba(0,0,0,0.12);
 }
 .ammy-header{display:flex;flex-direction:column;align-items:center;margin-bottom:12px}
-.ammy-msg{
-  font-size:clamp(0.88rem,2.2vw,0.96rem);
-  line-height:1.8;color:#78350f;text-align:center;margin-bottom:16px;
-}
+.ammy-msg{\n  font-size:clamp(0.88rem,2.2vw,0.96rem);\n  font-weight: 500;\n  line-height:1.95;\n  color:#78350f;\n  text-align:center;\n  margin-bottom:16px;\n  text-shadow: 0 1px 2px rgba(0,0,0,0.4);\n}
 .balloon-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:10px;justify-items:center;margin-bottom:4px;
@@ -411,9 +402,7 @@ body::after{
   display:flex;flex-direction:column;align-items:center;
   z-index:2;gap:6px;
 }
-.final-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.6rem,5.5vw,2.2rem);font-weight:900;
+.final-title{\n  font-family:'Quicksand', sans-serif;\n  font-weight: 700;\n  font-size:clamp(1.76rem,6.05vw,2.42rem);
   color:#fff;text-align:center;line-height:1.25;
   animation:glow 2.5s ease-in-out infinite alternate;
   margin-bottom:8px;
@@ -440,11 +429,7 @@ body::after{
 .cake-wrap:hover{transform:scale(1.05)}
 .cake-emoji{font-size:clamp(3.5rem,10vw,5rem);display:block;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.5));transition:all 0.3s}
 .cake-hint{font-size:0.85rem;color:rgba(255,255,255,0.65);margin-top:8px;font-style:italic}
-.final-msg{
-  font-size:clamp(0.9rem,2.4vw,1rem);
-  color:rgba(255,255,255,0.85);text-align:center;line-height:1.9;
-  max-width:400px;text-shadow:0 2px 8px rgba(0,0,0,0.5);
-}
+.final-msg{\n  font-size:clamp(0.9rem,2.4vw,1rem);\n  font-weight: 500;\n  line-height:1.95;\n  color:rgba(255,255,255,0.85);\n  text-align:center;\n  max-width:400px;\n  text-shadow:0 2px 8px rgba(0,0,0,0.5), 0 0 4px rgba(255,255,255,0.3);\n}
 .final-nav{background:rgba(255,255,255,0.05);border-top:1px solid rgba(255,255,255,0.08)}
 
 /* ── RESPONSIVE ── */
