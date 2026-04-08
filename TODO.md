@@ -1,18 +1,15 @@
-# E-Card Final Implementation - Progress Tracker ✅
+# E-Card CSS Syntax Fix - Progress Tracker
 
-## Current Task: Improve text visibility with Quicksand font + push changes
+## Current Task: Fix CSS newlines in src/index.css + test/deploy
 
 ## TODO Steps:
-1. [x] Edit src/index.css: Add Quicksand font, update font-families/weights/sizes/line-heights for better visibility
-2. [x] Test changes: Open index.html to verify text readability
-3. [x] Update TODO.md progress
-4. [ ] Git commit: "enhance text visibility with Quicksand font for optimal readability"
-5. [ ] Git push to https://github.com/Ianmabruk/birthday.git
-6. [ ] Verify deployment
-7. [ ] Task complete ✅
+1. [ ] Fix malformed CSS selectors in src/index.css (.cover-title, .card-title, .final-title)
+2. [ ] Test changes: Open index.html or run vite preview to verify
+3. [ ] Update TODO.md with [x] progress
+4. [ ] Git commit: \"fix css syntax: remove erroneous newlines in selectors\"
+5. [ ] Git push for Netlify redeploy
+6. [ ] Verify deployment & task complete ✅
 
-## Previous Tasks (Complete):
-- [x] Analyzed files/created plan  
-- [x] User approved plan with Quicksand font ✅
-
-**Next:** Git commit/push
+## Previous Tasks:
+- [x] Analyzed files & created plan  
+- [x] User approved plan ✅
